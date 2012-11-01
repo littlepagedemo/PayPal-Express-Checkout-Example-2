@@ -31,7 +31,7 @@ if($_POST)
 	$shipping_amt = $_POST["SHIPPING_AMT"];
 	
 	// update payment amount 
-	$_SESSION["Payment_Amount"] =  $_SESSION['cart_item_total_amt'] + $shipping_amt;
+	$_SESSION["Payment_Amount"] =  $_SESSION['cart_item_total_amt'] + $shipping_amt + $tax_amt;
 }
 
 
