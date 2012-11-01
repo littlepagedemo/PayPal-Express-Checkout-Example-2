@@ -19,8 +19,8 @@ include_once("paypal_ecfunctions.php");
 	if ($_SESSION['cart_item_arr']) 
 	{
 
-		// Cart items
-		$payment_request = get_payment_request();
+		// Data to be sent to paypal - in SetExpressCheckout
+		$padata = get_payment_request();
 		
 		$paymentAmount = $_SESSION["Payment_Amount"];	// from cart.php
 		
@@ -28,7 +28,7 @@ include_once("paypal_ecfunctions.php");
 		//-------------------------------------------------
 		// Data to be sent to paypal - in SetExpressCheckout
 		//--------------------------------------------------
-		$shipping_data = '';
+		/*$shipping_data = '';
 		if($shipping_amt)
 				$shipping_data = '&PAYMENTREQUEST_0_SHIPPINGAMT='.urlencode($shipping_amt);
 				
@@ -39,7 +39,7 @@ include_once("paypal_ecfunctions.php");
 		$padata = 	$shipping_data.
 					$tax_data.					
 				 	$payment_request;				
-		//echo '<br>'.$padata;			
+		//echo '<br>'.$padata;	*/		
 					
 					
 		//'--------------------------------------------------------------------		
@@ -53,7 +53,7 @@ include_once("paypal_ecfunctions.php");
 		//' Calls the SetExpressCheckout API call
 		//' Prepares the parameters for the SetExpressCheckout API Call
 		//'-------------------------------------------------------------		
-		$resArray = CallShortcutExpressCheckout ($paymentAmount, $PayPalCurrencyCode, $paymentType, $PayPalReturnURL, $PayPalCancelURL, $padata);
+		$resArray = CallShortcutExpressCheckout ($paymentAmount, $padata);
 		
 		$ack = strtoupper($resArray["ACK"]);
 		if($ack=="SUCCESS" || $ack=="SUCCESSWITHWARNING")
