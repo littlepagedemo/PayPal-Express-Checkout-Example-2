@@ -23,24 +23,7 @@ include_once("paypal_ecfunctions.php");
 		$padata = get_payment_request();
 		
 		$paymentAmount = $_SESSION["Payment_Amount"];	// from cart.php
-		
-		
-		//-------------------------------------------------
-		// Data to be sent to paypal - in SetExpressCheckout
-		//--------------------------------------------------
-		/*$shipping_data = '';
-		if($shipping_amt)
-				$shipping_data = '&PAYMENTREQUEST_0_SHIPPINGAMT='.urlencode($shipping_amt);
-				
-		$tax_data = '';
-		if($tax_amt)
-				$tax_data = '&PAYMENTREQUEST_0_TAXAMT='.urlencode($tax_amt);		
-		
-		$padata = 	$shipping_data.
-					$tax_data.					
-				 	$payment_request;				
-		//echo '<br>'.$padata;	*/		
-					
+								
 					
 		//'--------------------------------------------------------------------		
 		//'	Tips:  It is recommend that to save this info for the drop off rate 
